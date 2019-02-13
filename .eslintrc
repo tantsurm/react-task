@@ -6,6 +6,8 @@
     },
     "rules": {
         "brace-style": ["error", "stroustrup"],
-        "react/prop-types": 0
+        "react/prop-types": 0,
+        "no-shadow": "off",
+        "react/jsx-one-expression-per-line": "off",
     }
 }

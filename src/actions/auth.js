@@ -11,16 +11,16 @@ import storageKey from '../constants/storageKey';
 
 // action creators
 
-export const signIn = () => ({
+const signIn = () => ({
   type: SIGN_IN,
 });
 
-export const signInSuccess = payload => ({
+const signInSuccess = payload => ({
   type: SIGN_IN_SUCCESS,
   payload,
 });
 
-export const signInFailure = ({ message: error }) => ({
+const signInFailure = ({ message: error }) => ({
   type: SIGN_IN_FAILURE,
   error,
 });
@@ -41,8 +41,8 @@ export default (email, password) => async (dispatch) => {
     }));
     const { data } = await response;
 
-    dispatch(signInSuccess(data));
     localStorage.setItem(storageKey, JSON.stringify(data));
+    dispatch(signInSuccess(data));
   }
   catch ({ message }) {
     dispatch(signInFailure(message));

@@ -1,6 +1,7 @@
-import React, { lazy } from 'react';
+import { lazy } from 'react';
 
 const SignIn = lazy(() => import('../components/public/signIn'));
+const UserList = lazy(() => import('../components/private/user-only/UserList'));
 
 export const LANDING = {
   path: '/',
@@ -8,10 +9,10 @@ export const LANDING = {
   component: SignIn,
 };
 
-export const HOME = {
-  path: '/home',
+export const USER_LIST = {
+  path: '/list/:page?',
   access: 'user-only',
-  component: () => <h1>Wats up homie ? Looks like u've entered the user-only component... U are one of us!</h1>,
+  component: UserList,
 };
 
 export const NOT_FOUND = {

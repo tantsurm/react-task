@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Redirect } from 'react-router-dom';
 
 import Form from './Form';
 import signInRequest from '../../../actions/auth';
@@ -15,7 +16,7 @@ const SignIn = ({
     return <div>Loading</div>;
   }
   if (payload) {
-    return <div>Here comes some data</div>;
+    return <Redirect to="/home" />;
   }
   if (error) {
     return <div>Error comes here thou</div>;

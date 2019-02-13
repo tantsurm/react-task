@@ -6,6 +6,7 @@ export default ({
   method,
   token,
 }) => {
+  console.log('CONFIG', apiUrl + route);
   if (!method && !data) {
     return {
       url: apiUrl + route,

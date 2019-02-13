@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router';
 
 import storageKey from '../../../constants/storageKey';
-// import { LANDING } from '../../../constants/routes'
+import { LANDING } from '../../../constants/routes'
 
 const ProtectedRoute = ({ component: Component, path, access }) => (
   <Route
@@ -11,10 +11,10 @@ const ProtectedRoute = ({ component: Component, path, access }) => (
       const token = localStorage.getItem(storageKey);
 
       if (access === 'public' || (token && access === 'user-only')) {
-        return <Component {...props} />;
+        return <Component {...props} token={token} />;
       }
 
-      return <Redirect to="/" />;
+      return <Redirect to={LANDING.path} />;
     }}
   />
 );

@@ -7,4 +7,6 @@ import combinedReducers from '../reducers';
 
 const store = createStore(combinedReducers, initialState, applyMiddleware(thunk, reduxLogger));
 
+window.s = () => store.getState();
+
 export default store;
