@@ -1,0 +1,7 @@
+.page-controls {
+  width: 10% !important;
+}
+
+.page-controls__control {
+  cursor: pointer;
+}

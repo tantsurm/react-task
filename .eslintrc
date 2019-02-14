@@ -9,5 +9,7 @@
         "react/prop-types": 0,
         "no-shadow": "off",
         "react/jsx-one-expression-per-line": "off",
+        "camelcase": "off",
+        "no-plusplus": "off"
     }
 }

@@ -32,7 +32,7 @@ export default (nextPageNumber, token) => async (dispatch) => {
     dispatch(getUserList());
 
     const response = await axios(createConfig({
-      route: GET_USER_LIST_URL + (nextPageNumber ? `?page=${nextPageNumber}` : ''),
+      route: GET_USER_LIST_URL + nextPageNumber,
       token,
     }));
     const { data } = await response;

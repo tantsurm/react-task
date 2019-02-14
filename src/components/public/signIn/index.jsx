@@ -4,19 +4,24 @@ import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router-dom';
 
 import Form from './Form';
-import signInRequest from '../../../actions/auth';
+import Spinner from '../../common/spinner';
+
+import signInRequest, { nulifyAuthState } from '../../../actions/auth';
+import { USER_LIST } from '../../../constants/routes';
 
 const SignIn = ({
   isFetching,
   payload,
   error,
   signInRequest,
+  nulifyAuthState,
 }) => {
   if (isFetching) {
-    return <div>Loading</div>;
+    return <Spinner />;
   }
   if (payload) {
-    return <Redirect to="/home" />;
+    nulifyAuthState();
+    return <Redirect to={USER_LIST.path} />;
   }
   if (error) {
     return <div>Error comes here thou</div>;
@@ -25,11 +30,14 @@ const SignIn = ({
   return <Form signInRequest={signInRequest} />;
 };
 
-const mapStateToProps = ({ auth }) => ({
-  ...auth,
+const mapStateToProps = state => ({
+  isFetching: state.auth.isFetching,
+  payload: state.auth.payload,
+  error: state.auth.error,
 });
 const mapDispatchToProps = dispatch => bindActionCreators({
   signInRequest,
+  nulifyAuthState,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

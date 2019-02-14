@@ -4,6 +4,7 @@ import {
   SIGN_IN_URL,
   SIGN_IN, SIGN_IN_FAILURE,
   SIGN_IN_SUCCESS,
+  NULIFY_AUTH_STATE,
 } from '../constants';
 
 import createConfig from '../configs/axiosConfig';
@@ -23,6 +24,10 @@ const signInSuccess = payload => ({
 const signInFailure = ({ message: error }) => ({
   type: SIGN_IN_FAILURE,
   error,
+});
+
+export const nulifyAuthState = () => ({
+  type: NULIFY_AUTH_STATE,
 });
 
 // thunk

@@ -1,7 +1,13 @@
 import { GET_USER_LIST, GET_USER_LIST_SUCCESS, GET_USER_LIST_FAILURE } from '../../constants';
-import initialState from '../initialState';
 
-function homeReducer(state = initialState.list, {
+const initialState = {
+  userList: [],
+  pagination: { page: null, total_pages: null },
+  isLoading: false,
+  error: null,
+};
+
+function homeReducer(state = initialState, {
   type,
   payload,
   error,
@@ -17,6 +23,7 @@ function homeReducer(state = initialState.list, {
       const {
         data,
         page,
+        per_page,
         total_pages,
       } = payload;
 
@@ -26,6 +33,7 @@ function homeReducer(state = initialState.list, {
         pagination: {
           page,
           total_pages,
+          per_page,
         },
         isLoading: false,
       };

@@ -7,10 +7,10 @@ import ProtectedRoute from './components/common/protectedRoute';
 const router = () => (
   <Switch>
     {
-      routerConfig.map(({ path, access, component }) => (
+      routerConfig.map(({ routePath, access, component }) => (
         <ProtectedRoute
-          key={path || null}
-          path={path}
+          key={routePath || null}
+          path={routePath}
           access={access}
           component={component}
           exact

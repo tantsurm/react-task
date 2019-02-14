@@ -31,14 +31,39 @@ class Form extends React.Component {
     const { email, password } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h1>Sign in before continue:</h1>
-        <hr />
-        <input type="text" value={email} onChange={this.handleEmailInput} />
-        <input type="password" value={password} onChange={this.handlePasswordInput} />
-        <hr />
-        <button type="submit">Sign in!</button>
-      </form>
+      <div className="container-fluid">
+        <div className="row">
+          <form className="m-auto p-5 col-8 col-lg-6 text-center" onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email address</label>
+              <input
+                value={email}
+                onChange={this.handleEmailInput}
+                type="email"
+                className="form-control"
+                id="email"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+                required
+              />
+              <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                value={password}
+                onChange={this.handlePasswordInput}
+                type="password"
+                className="form-control"
+                id="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
     );
   }
 }

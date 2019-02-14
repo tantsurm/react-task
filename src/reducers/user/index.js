@@ -1,9 +1,4 @@
-import {
-  SIGN_IN,
-  SIGN_IN_SUCCESS,
-  SIGN_IN_FAILURE,
-  NULIFY_AUTH_STATE,
-} from '../../constants';
+import { GET_SIGLE_USER, GET_SIGLE_USER_SUCCESS, GET_SIGLE_USER_FAILURE } from '../../constants';
 
 const initialState = {
   isFetching: false,
@@ -11,30 +6,27 @@ const initialState = {
   error: null,
 };
 
-function authReducer(state = initialState, { type, payload, error }) {
+function userReducer(state = initialState, { type, payload, error }) {
   switch (type) {
-    case SIGN_IN: {
+    case GET_SIGLE_USER: {
       return {
         ...state,
         isFetching: true,
       };
     }
-    case SIGN_IN_SUCCESS: {
+    case GET_SIGLE_USER_SUCCESS: {
       return {
         ...state,
         isFetching: false,
         payload,
       };
     }
-    case SIGN_IN_FAILURE: {
+    case GET_SIGLE_USER_FAILURE: {
       return {
         ...state,
         isFetching: false,
         error,
       };
-    }
-    case NULIFY_AUTH_STATE: {
-      return initialState;
     }
     default: {
       return state;
@@ -42,4 +34,4 @@ function authReducer(state = initialState, { type, payload, error }) {
   }
 }
 
-export default authReducer;
+export default userReducer;
